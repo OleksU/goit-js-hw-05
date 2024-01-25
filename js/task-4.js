@@ -1,23 +1,9 @@
 const getTotalBalanceByGender = (users, gender) => {
-    const balanceArr = [];
-    for (const user of users) {
-        if (user.gender === gender){
-            balanceArr.push(user.balance);
-        }
-    }
-    let totalBalance = 0;
-    for (const bal of balanceArr){
-        totalBalance += bal;
-    }
-    return totalBalance;
+     const totalBalance = users.filter((item) => 
+        item.gender === gender).reduce((total, num) => {
+        return total + num.balance;},0);
+     return totalBalance;
 }
-
-// const getTotalBalanceByGender = (users, gender) => {
-//      const totalBalance = users.filter(item => {
-//         item.gender.includes(gender)}).reduce((total, num) => {
-//         return total + num.balance;},0);
-//      return totalBalance;
-// }
 
 const allUsers = [
     {
